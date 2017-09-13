@@ -10,6 +10,6 @@ public class NormalTweet extends Tweet implements Tweetable{
 
     }
     public Boolean isImportant(){
-        return Boolean.False;
+        return Boolean.FALSE;
     }
 }
