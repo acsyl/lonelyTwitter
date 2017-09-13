@@ -40,7 +40,9 @@ public class LonelyTwitterActivity extends Activity {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				//lab work
+				Tweet NewTweet= new NormalTweet(text);
+
 
 			}
 		});
