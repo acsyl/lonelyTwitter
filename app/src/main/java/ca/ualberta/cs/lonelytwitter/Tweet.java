@@ -10,7 +10,7 @@ public abstract class Tweet {
     private String message;
     private Date date;
 
-    ArrayList<Mood> moodList = new ArrayList<Mood>();
+    ArrayList<CurrentMood> moodList = new ArrayList<CurrentMood>();
 
     public Tweet(String message){
         this.message = message;
@@ -44,11 +44,11 @@ public abstract class Tweet {
         return date;
     }
 
-    public void addMood(Mood mood){
+    public void addMood(CurrentMood mood){
         moodList.add(mood);
     }
 
-    public  void removeMood(Mood mood){
+    public  void removeMood(CurrentMood mood){
         moodList.remove(mood);
     }
 }
