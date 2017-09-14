@@ -13,24 +13,29 @@ public abstract class Tweet {
 
     ArrayList<Mood> moodList = new ArrayList<Mood>();
 
+
     public Tweet(String message){
         this.message = message;
+        date = new Date();
     }
-
     public Tweet(String message, Date date){
         this.message = message;
-        this.date = date;
+        this.date=date;
     }
+
 
     // abstract body
     public abstract Boolean isImportant();
 
     public void setMessage(String message) throws TweetTooLongException {
-        if (message.length() > 140){
+        if (message.length() < 140){
             // Do something
-            throw new TweetTooLongException();
+            this.message=message;
         }
-        this.message = message;
+        else{
+            throw new TweetTooLongException();
+
+        }
     }
 
     public void setDate(Date date) {
