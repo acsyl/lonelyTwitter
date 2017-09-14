@@ -51,11 +51,11 @@ public class LonelyTwitterActivity extends Activity {
 
 				}
 				Tweetable tweet3 =new ImportantTweet("");
-				//Log.d("","The important method on tweet returns"+ tweet.isImportant());
-				//Log.d("","The important method on tweet returns"+ tweet1.isImportant());
-				ImportantTweet newestImportantTweet=new ImportantTweet(text);
-				newestImportantTweet.getMessage();
-				newestImportantTweet.isImportant();
+				Log.d("","The important method on tweet returns"+ tweet.isImportant());
+				Log.d("","The important method on tweet returns"+ tweet1.isImportant());
+				//ImportantTweet newestImportantTweet=new ImportantTweet(text);
+				//newestImportantTweet.getMessage();
+				//newestImportantTweet.isImportant();
 
 				//String test=newTweet.getMessage();
 				ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
