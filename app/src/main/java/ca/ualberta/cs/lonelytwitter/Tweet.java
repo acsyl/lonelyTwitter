@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by shuyang2 on 2017-09-12.
  */
 
-public abstract class Tweet {
+public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
 
@@ -25,7 +25,7 @@ public abstract class Tweet {
 
 
     // abstract body
-    public abstract Boolean isImportant();
+
 
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() < 140){
@@ -37,6 +37,7 @@ public abstract class Tweet {
 
         }
     }
+    public abstract Boolean isImportant();
 
     public void setDate(Date date) {
         this.date = date;
