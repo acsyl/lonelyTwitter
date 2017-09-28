@@ -1,17 +1,24 @@
+/*
+ * Class Name: Tweet
+ *
+ * Version:Version 1.0
+ *
+ * Date: September 28, 2017
+ *
+ * Copyright (c) Team x,CMPUT301.University of Alberta.All Rights Reserved.You may use,distribute, or modify this code under terms and conditions of the code of Student Behavior of Alberta.
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by shuyang2 on 2017-09-12.
- */
+
 
 public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
 
-    ArrayList<Mood> moodList = new ArrayList<Mood>();
 
 
     public Tweet(String message){
@@ -42,20 +49,19 @@ public abstract class Tweet implements Tweetable {
     public void setDate(Date date) {
         this.date = date;
     }
+    @Override
+    public String toString(){
+        return date.toString() + " | " + message;
+    }
+
 
     public String getMessage() {
         return message;
     }
 
+
     public Date getDate() {
         return date;
     }
 
-    public void addMood(Mood mood){
-        moodList.add(mood);
-    }
-
-    public  void removeMood(Mood mood){
-        moodList.remove(mood);
-    }
 }
