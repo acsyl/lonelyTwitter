@@ -13,7 +13,15 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+/*
+* Represent a Tweet
+*
+*  @author
+*  @version 1.0
+*  @see NormalTweet
+*  @see ImportantTweet
+*  @since 1.0
+* */
 
 public abstract class Tweet implements Tweetable {
     private String message;
@@ -29,6 +37,12 @@ public abstract class Tweet implements Tweetable {
         this.message = message;
         this.date=date;
     }
+    /*
+    * constructs Tweet objects
+    *
+    * @param message tweet message
+    * @param date tweet date
+    * */
 
 
     // abstract body
@@ -45,6 +59,14 @@ public abstract class Tweet implements Tweetable {
         }
     }
     public abstract Boolean isImportant();
+
+        /*
+    * set Tweet message
+    *
+    * @param message tweet message
+    * @throws TweetTooLongException
+    * */
+
 
     public void setDate(Date date) {
         this.date = date;
