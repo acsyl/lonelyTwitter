@@ -37,7 +37,7 @@ public class ElasticsearchTweetController {
                     if (result.isSucceeded()) {
                         tweet.setId(result.getId());
                     } else {
-                        Log.i("Error", "");
+                        Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
                     }
                 } catch (Exception e) {
                     Log.i("Error", "The application failed to build and send the tweets");
@@ -62,6 +62,48 @@ public class ElasticsearchTweetController {
             }
         }
     }
+    public static class SearchTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
+        @Override
+        protected ArrayList<NormalTweet> doInBackground(String... search_parameters) {
+            verifySettings();
+
+            ArrayList<NormalTweet> tweets = new ArrayList<NormalTweet>();
+
+            // String search_string = "{\"from\": 0, \"size\": 10000}";
+            String search_string = "{\"from\": 0, \"size\": 10000, \"query\": {\"match\": {\"message\": \"" + search_parameters[0] + "\"}}}";
+
+            // assume that search_parameters[0] is the only search term we are interested in using
+            //Search search = new Search.Builder(search_parameters)
+            Search search = new Search.Builder(search_string).addIndex("testing").addType("tweet").build();
+
+            try {
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()) {
+                    List<NormalTweet> foundTweets = result.getSourceAsObjectList(NormalTweet.class);
+                    tweets.addAll(foundTweets);
+                }
+                else {
+                    Log.i("Error", "The search query failed to find any tweets that matched.");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+
+            return tweets;
+        }
+        public static void verifySettings() {
+            if (client == null) {
+                DroidClientConfig.Builder builder = new DroidClientConfig.Builder("http://cmput301.softwareprocess.es:8080");
+                DroidClientConfig config = builder.build();
+
+                JestClientFactory factory = new JestClientFactory();
+                factory.setDroidClientConfig(config);
+                client = (JestDroidClient) factory.getObject();
+            }
+        }
+    }
+
     public static class GetTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
         @Override
         protected ArrayList<NormalTweet> doInBackground(String... search_parameters) {
@@ -82,7 +124,7 @@ public class ElasticsearchTweetController {
 
                 }
                 else {
-                    Log.i("Error","");
+                    Log.i("Error","Something went wrong when we tried to communicate with the elasticsearch server!");
                 }
             }
             catch (Exception e) {
@@ -91,6 +133,8 @@ public class ElasticsearchTweetController {
 
             return tweets;
         }
+
+
 
         public static void verifySettings() {
             if (client == null) {
