@@ -2,67 +2,39 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-/**
- * Created by ACsy on 2017-10-10.
- */
-
 public class TweetListTest extends ActivityInstrumentationTestCase2 {
-    public TweetListTest() {
-        super(LonelyTwitterActivity.class);
 
+    public TweetListTest(){
+        super(ca.ualberta.cs.lonelytwitter.LonelyTwitterActivity.class);
     }
 
     public void testAddTweet(){
-        Tweetlist tweets = new Tweetlist();
-        NormalTweet tweet = new NormalTweet("Test Tweet");
-
-        try {
-            tweets.addTweet(tweet);
-        } catch (IllegalArgumentException e){
-            assertTrue(true);
-        }
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("adding tweet");
+        tweets.add(tweet);
+        assertTrue(tweets.hasTweet(tweet));
     }
 
-
-    public void testDeleteTweet() {
-        Tweetlist tweets = new Tweetlist();
-        Tweet myTweet = new NormalTweet("my tweet");
-        tweets.addTweet(myTweet);
-        tweets.deleteTweet(myTweet);
-        assertFalse(tweets.hasTweet(myTweet));
-
+    public void testDelete(){
+        TweetList list = new TweetList();
+        Tweet tweet = new NormalTweet("test");
+        list.add(tweet);
+        list.delete(tweet);
+        assertFalse(list.hasTweet(tweet));
     }
 
-    public void testHasTweet() {
-        Tweetlist tweets = new Tweetlist();
-        Tweet myTweet = new NormalTweet("my tweet");
-        assertFalse(tweets.hasTweet(myTweet));
-        tweets.addTweet(myTweet);
-        assertTrue(tweets.hasTweet(myTweet));
-
-    }
     public void testGetTweet(){
-        //getTweet method will take an index and will return the tweet at that index.
-        Tweetlist tweets = new Tweetlist();
-        NormalTweet  myTweet = new NormalTweet("my tweet");
-        tweets.addTweet(myTweet);
+        TweetList tweets = new TweetList(); //
+        Tweet tweet = new NormalTweet("test");
+        tweets.add(tweet);
         Tweet returnedTweet = tweets.getTweet(0);
-        assertEquals(returnedTweet.getMessage(),myTweet.getMessage());
-        assertEquals(returnedTweet.getDate(), myTweet.getDate());
-
-
+        assertEquals(returnedTweet.getMessage(), tweet.getMessage());
     }
 
-    public void testGetCount() {
-        Tweetlist tweets = new Tweetlist();
-        assertEquals(tweets.getCount(), 0);
-        NormalTweet tweet = new NormalTweet("Another Test Tweet");
-
-        tweets.addTweet(tweet);
-        assertEquals(tweets.getCount(), 1);
-
-        tweets.deleteTweet(tweet);
-        assertEquals(tweets.getCount(), 0);
+    public void testHasTweet(){
+        TweetList list = new TweetList();
+        Tweet tweet = new NormalTweet("test");
+        list.add(tweet);
+        assertTrue(list.hasTweet(tweet));
     }
-}
 }

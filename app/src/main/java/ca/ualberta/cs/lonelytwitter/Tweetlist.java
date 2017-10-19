@@ -1,36 +1,27 @@
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-/**
- * Created by ACsy on 2017-10-10.
- */
-
-public class Tweetlist {
+public class TweetList {
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-//    add tweet to a list of tweets
-    public void addTweet(Tweet tweet){
-        tweets.add(tweet);
 
+    public TweetList(){
 
     }
-//    delete tweet to a list of tweets
-    public void deleteTweet(Tweet tweet){
-        tweets.remove(tweet);
 
-    }
-//    if it ,return True
-    public boolean hasTweet(Tweet tweet){
-        return tweets.contains(tweet);
-
-    }
     public Tweet getTweet(int index){
         return tweets.get(index);
     }
-    public int getCount() {
-        return tweets.size();
+
+    public boolean hasTweet(Tweet tweet){
+        return tweets.contains(tweet);
     }
 
+    public void add(Tweet tweet) {
+        tweets.add(tweet);
+    }
+
+    public void delete(Tweet tweet) {
+        tweets.remove(tweet);
+    }
 }
