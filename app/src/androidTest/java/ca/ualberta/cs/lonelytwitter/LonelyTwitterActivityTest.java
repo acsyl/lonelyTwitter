@@ -11,9 +11,7 @@ import com.robotium.solo.Solo;
 
 import junit.framework.TestCase;
 
-/**
- * Created by wz on 14/09/15.
- */
+
 public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
 
     private Solo solo;
