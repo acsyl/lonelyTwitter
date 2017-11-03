@@ -1,7 +1,7 @@
 
 package ca.ualberta.cs.lonelytwitter;
 
-import android.app.Activity;
+
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.EditText;
@@ -21,7 +21,7 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
     }
 
     public void testStart() throws Exception {
-        Activity activity = getActivity();
+
     }
 
     public void setUp() throws Exception{
