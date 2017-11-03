@@ -37,4 +37,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         list.add(tweet);
         assertTrue(list.hasTweet(tweet));
     }
+    public void test(){
+        assertTrue(true);
+    }
 }
