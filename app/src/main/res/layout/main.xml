@@ -28,6 +28,7 @@
     <EditText
         android:id="@+id/body"
         android:layout_width="fill_parent"
+        android:inputType="text"
         android:layout_height="wrap_content"
         android:scrollbars="horizontal" />
 
