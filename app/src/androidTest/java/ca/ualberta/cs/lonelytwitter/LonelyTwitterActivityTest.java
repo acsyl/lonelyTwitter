@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import com.robotium.solo.Solo;
 
-import junit.framework.TestCase;
+
 
 
 public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
